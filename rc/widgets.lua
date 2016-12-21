@@ -267,7 +267,7 @@ mynetworklauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
 net_wireless = net_widgets.wireless({interface="wlp4s0"})
 net_wired = net_widgets.indicator({
-    interfaces  = {"enp0s31f6", ""},
+    interfaces  = {"enp0s31f6", "docker0"},
     timeout     = 5
 })
 

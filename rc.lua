@@ -9,7 +9,6 @@ vicious = require("vicious")
 network = require("network.pech")
 -- net_widgets = require("net_widgets")
 
-
 -- Load Debian menu entries
 require("debian.menu")
 
@@ -17,11 +16,8 @@ require("debian.menu")
 --change this line next line to YOUR CONFIG PATH. My configd looks like:
 --configd = "/home/niko/.config/awesome/"
 
-
-
 -- Set default terminal
-  local terminal =  urxvt
---local terminal = "uxterm"
+terminal =  "urxvt"
 
 -- Set default text editor defined by $EDITOR or vi
 -- Check your shell config for $EDITOR if it exists or "echo $EDITOR"
@@ -109,6 +105,7 @@ nettimer:connect_signal("timeout", function()
         mynetworklauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                                 menu = mynetworkmenu()})
     end)
+
 nettimer:start()
 
 -- Remaining modules

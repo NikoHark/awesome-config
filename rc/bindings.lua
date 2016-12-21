@@ -94,6 +94,7 @@ config.keys.global = awful.util.table.join(
 	-- 	"' -sb '" .. beautiful.bg_focus ..
 	-- 	"' -sf '" .. beautiful.fg_focus .. "'")
   -- end, "Run a command"),
+
   -- awful.key({ modkey }, "r",
   --           function ()
   --               awful.prompt.run({ prompt = "Run Lua code: " },
@@ -103,27 +104,32 @@ config.keys.global = awful.util.table.join(
   --           end),
 
   -- Run or raise applications with dmenu
-  awful.key({ modkey, }, "r", function ()
-      local f_reader = io.popen( "dmenu_path | dmenu -b -nb '".. beautiful.bg_normal .."' -nf '".. beautiful.fg_normal .."' -sb '#955'")
-      local command = assert(f_reader:read('*a'))
-      f_reader:close()
-      if command == "" then return end
+  -- awful.key({ modkey }, "r", function ()
+  --     local f_reader = io.popen( "dmenu_path | dmenu -b -nb '".. beautiful.bg_normal .."' -nf '".. beautiful.fg_normal .."' -sb '#955'")
+  --     local command = assert(f_reader:read('*a'))
+  --     f_reader:close()
+  --     if command == "" then return end
+  --
+  --     -- Check throught the clients if the class match the command
+  --     local lower_command=string.lower(command)
+  --     for k, c in pairs(client.get()) do
+  --         local class=string.lower(c.class)
+  --         if string.match(class, lower_command) then
+  --             for i, v in ipairs(c:tags()) do
+  --                 awful.tag.viewonly(v)
+  --                 c:raise()
+  --                 c.minimized = false
+  --                 return
+  --             end
+  --         end
+  --     end
+  --     awful.util.spawn(command)
+  -- end),
 
-      -- Check throught the clients if the class match the command
-      local lower_command=string.lower(command)
-      for k, c in pairs(client.get()) do
-          local class=string.lower(c.class)
-          if string.match(class, lower_command) then
-              for i, v in ipairs(c:tags()) do
-                  awful.tag.viewonly(v)
-                  c:raise()
-                  c.minimized = false
-                  return
-              end
-          end
-      end
-      awful.util.spawn(command)
-  end),
+awful.key({ modkey }, "r", function() menubar.show() end),
+
+  -- awful.key({ modkey }, "r", function () mypromptbox[mouse.screen]:run() end),
+
 -- Run or raise applications with dmenu with elevated privileges
   --  awful.key({ modkey , "Shift"}, "r", function ()
   --     local f_reader = io.popen( "dmenu_path | dmenu -i -nb '".. beautiful.bg_urgent .."' -nf '".. beautiful.fg_urgent .."' -sb '#955'")
@@ -134,13 +140,13 @@ config.keys.global = awful.util.table.join(
   --  end),
 
 -- Run or raise applications with dmenu with nvidia gpu
-   awful.key({ modkey,         }, "g", function ()
-      local f_reader = io.popen( "dmenu_path | dmenu -i -nb '".. beautiful.bg_urgent .."' -nf '".. beautiful.fg_urgent .."' -sb '#955'")
-      local command = assert(f_reader:read('*a'))
-      f_reader:close()
-      if command == "" then return end
-      awful.util.spawn("optirun " .. command)
-   end),
+  --  awful.key({ modkey,         }, "g", function ()
+  --     local f_reader = io.popen( "dmenu_path | dmenu -i -nb '".. beautiful.bg_urgent .."' -nf '".. beautiful.fg_urgent .."' -sb '#955'")
+  --     local command = assert(f_reader:read('*a'))
+  --     f_reader:close()
+  --     if command == "" then return end
+  --     awful.util.spawn("optirun " .. command)
+  --  end),
 
    -- Screenshot
    awful.key({}, "Print", function() screenshot("root") end),
