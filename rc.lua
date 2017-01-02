@@ -77,7 +77,7 @@ config.layouts = {
    awful.layout.suit.fair
 }
 config.tags = {
-  names  = { "1", "2", "3", "4", 5, 6},
+  names  = { "1", "2", "3", "4", "5", 6},
   layout = { config.layouts[1], config.layouts[1], config.layouts[1], config.layouts[1], config.layouts[1],
               config.layouts[1]}
 }
